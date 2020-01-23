@@ -1,10 +1,12 @@
+package com.mutinda.adapters;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mutinda.R;
 
@@ -15,6 +17,10 @@ public class CustomAdpter extends BaseAdapter {
     private Context context;
 
 
+    public CustomAdpter(String[] countries, Context context) {
+        this.countries = countries;
+        this.context = context;
+    }
 
     @Override
     public int getCount() {
@@ -25,20 +31,24 @@ public class CustomAdpter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
 
-        return null;
+        return countries[position];
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        lstView= (ListView) inflates.inflate(R.layout.lst_view,parent,true );
 
+        if(convertView == null){
+            convertView = LayoutInflater.from(context).inflate(R.layout.row_item_layout,parent,false);
+        }
 
-
-        return lstView;
+        String country = countries[position];
+        TextView textView = convertView.findViewById(R.id.label);
+        textView.setText(country);
+        return  convertView;
     }
 }
