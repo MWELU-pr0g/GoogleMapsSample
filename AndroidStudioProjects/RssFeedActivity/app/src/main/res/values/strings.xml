@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RssFeedActivity</string>
+    <string name="text">DEFAULT TEXT</string>
+    <string name="button">PRESS TO UPDATE</string>
+</resources>
